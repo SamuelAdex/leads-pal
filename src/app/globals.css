@@ -16,18 +16,43 @@
   }
 }
 
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background-color: #090e1b;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+}
+
+table{
+  width: 100%;
+}
+table, td, td{
+  border-collapse: collapse;
+  /* border-bottom: 1px solid #bdbdbd; */
+}
+td, th{
+  padding: 10px;
+  text-align: left;
+}
+
+.loader {
+  animation: loader infinite 0.7s linear;
+}
+
+@keyframes loader {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }
