@@ -14,7 +14,7 @@ const Header = () => {
   return (
     <div className='flex items-center'>
         <div className='flex-[4]'>
-            <span className='text-[25px] text-white font-bold'>Welcome, {userInfo?.username}</span>
+            <span className='text-[25px] text-white font-bold'>Welcome, {userInfo?.firstName}</span>
         </div>
         <div className='flex items-center gap-3 flex-[3]'>
             <div className='w-full flex items-center gap-3'>

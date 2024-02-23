@@ -2,16 +2,20 @@
 
 import { useAuthContext } from '@/context/AuthContext.context';
 import React, {useEffect} from 'react'
+import UpgradeNotice from './UpgradeNotice';
 
 const RootComponent = ({children}) => {
-  const {fetchUserDetails, isLoading} = useAuthContext()
+  const {fetchUserDetails, isLoading, userInfo} = useAuthContext()
 
   useEffect(()=>{
     fetchUserDetails();
   },[isLoading])
 
   return (
-    <div>{children}</div>
+    <div>
+      {userInfo.isKyc !== true && <UpgradeNotice />}
+      {children}
+    </div>
   )
 }
 

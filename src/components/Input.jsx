@@ -9,6 +9,7 @@ const Input = ({
   style,
   width,
   minWidth,
+  labelStyle,
   required,
 }) => {
   return (
@@ -18,7 +19,7 @@ const Input = ({
       }   gap-2 mt-3`}
     >
       {labelName && (
-        <label className="text-[14px] font-[500] text-[#000]" htmlFor="">
+        <label className={`text-[14px] font-[500] text-[#000] ${labelStyle}`} htmlFor="">
           {labelName}
         </label>
       )}
@@ -26,7 +27,7 @@ const Input = ({
         pattern={inputType == "date" ? "d{4}/d{2}/d{2}" : null}
         required={required}
         type={inputType}
-        className={`rounded-[12px] p-[14px] text-[#000] mt-1.3 border-[1px] text-[12px] focus:outline-none ${style}`}
+        className={`rounded-[12px] p-[14px] w-full text-[#000] mt-1.3 border-[1px] text-[12px] focus:outline-none ${style}`}
         placeholder={placeholder}
         value={value}
         onChange={onChangeEvent}

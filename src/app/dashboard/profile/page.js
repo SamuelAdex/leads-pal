@@ -33,7 +33,7 @@ const Page = () => {
                         </div>
                         <div className='flex flex-col gap-[3px]'>
                             <span className='md:text-[10px] text-[8px] font-bold text-[#bdbdbd]'>Point</span>
-                            <span className='md:text-[20px] text-[16px] font-bold text-white'>2,000</span>
+                            <span className='md:text-[20px] text-[16px] font-bold text-white'>{userInfo?.points}</span>
                         </div>
                     </div>
                     <div className='text-white md:text-[25px] text-[20px]'>{userInfo.firstName} {userInfo.lastName}</div>

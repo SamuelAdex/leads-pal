@@ -31,6 +31,53 @@ const UserSchema = new Schema(
     isAdmin: {
       type: Boolean,
       default: false
+    },
+    isKyc:{
+      type: Boolean,
+      default: false
+    },
+    kycStatus:{
+      type: String,
+      default: "not-started"
+    },
+    fullname: {
+      type: String
+    },
+    phone:{
+      type: String
+    },
+    dob:{
+      type: Date
+    },
+    country:{
+      type: String
+    },
+    state:{
+      type: String
+    },
+    address:{
+      type: String
+    },
+    zipCode:{
+      type: String
+    },
+    bankName:{
+      type: String
+    },
+    accNumber:{
+      type: String
+    },
+    accName:{
+      type: String
+    },
+    aadharFrontCardUrl:{
+      type: String
+    },
+    aadharBackCardUrl:{
+      type: String
+    },
+    panCardUrl:{
+      type: String
     }
   },
   {
