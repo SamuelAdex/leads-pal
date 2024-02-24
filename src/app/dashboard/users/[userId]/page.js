@@ -69,12 +69,14 @@ const Page = ({params}) => {
         }
     }
 
+    console.log(data)
+
   return (
     <div className='flex-[4] mt-8'>
         <div className=''>
             <span className="text-white md:text-[30px] font-bold text-[20px]">Verify User KYC</span>
         </div>
-        <div className="text-white font-bold flex flex-col gap-3">
+        <div className="text-white font-bold flex flex-col gap-6">
             <div className='overflow-auto'>
                 <table className='overflow-auto'>
                     <thead className='text-primary'>
@@ -111,8 +113,8 @@ const Page = ({params}) => {
                 <Image
                    src={data.aadharFrontCardUrl}
                    alt=''
-                   width={200}
-                   height={200}
+                   width={400}
+                   height={300}
                 />
             </div>
             <div className=''>
@@ -120,8 +122,8 @@ const Page = ({params}) => {
                 <Image
                    src={data.aadharBackCardUrl}
                    alt=''
-                   width={200}
-                   height={200}
+                   width={400}
+                   height={300}
                 />
             </div>
             <div className=''>
@@ -129,8 +131,8 @@ const Page = ({params}) => {
                 <Image
                    src={data.panCardUrl}
                    alt=''
-                   width={200}
-                   height={200}
+                   width={400}
+                   height={300}
                 />
             </div>
             {data.isKyc == true ? (

@@ -29,7 +29,9 @@ export async function POST(request){
         const tokenData = {
             id: user._id,
             username: user.username,
-            email: user.email
+            email: user.email,
+            firstName: user.firstName,
+            lastName: user.lastName,
         }
 
         // Create a token with expiration of 1 day
