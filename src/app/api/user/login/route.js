@@ -32,6 +32,7 @@ export async function POST(request){
             email: user.email,
             firstName: user.firstName,
             lastName: user.lastName,
+            points: user.points
         }
 
         // Create a token with expiration of 1 day
