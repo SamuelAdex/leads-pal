@@ -20,3 +20,7 @@ Content-Type: "application/json"
     "email": "adexsamuel6@gmail.com",
     "password": "123456"
 }
+
+
+###
+GET https://leads-pal-samueladexs-projects.vercel.app/api/auth/me?userId=65d8c795e3bd1466f61f9936
