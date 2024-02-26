@@ -27,7 +27,7 @@ GET https://leads-pal-samueladexs-projects.vercel.app/api/auth/me?userId=65d8c79
 
 
 ###
-POST GET https://leads-pal-samueladexs-projects.vercel.app/api/contact
+POST https://leads-pal-samueladexs-projects.vercel.app/api/contact
 
 Content-Type: application/json
 

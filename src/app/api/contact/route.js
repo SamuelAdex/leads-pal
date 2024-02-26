@@ -10,7 +10,7 @@ export async function POST(request){
     try {
         await connectToDB()
 
-        const contact = await Contact.create({
+        const contact = new Contact({
             contactId, 
             firstName, 
             lastName, 
@@ -20,7 +20,9 @@ export async function POST(request){
             user: userId
         })
 
-        if(contact){
+        const savedContact = await contact.save()
+
+        if(savedContact){
             return new Response(jsonRes({msg: "success"}), {status: 200});
         }else{
             return new Response(jsonRes({msg: "Unable to add user contacts"}), {status: 400});
