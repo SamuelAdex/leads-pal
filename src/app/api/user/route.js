@@ -3,6 +3,7 @@ import { connectToDB } from '@/utils/database'
 import { jsonRes } from '@/utils/stringifyResponse'
 import ResponseCache from 'next/dist/server/response-cache';
 import { NextResponse, NextRequest } from 'next/server'
+import jwt from 'jsonwebtoken';
 
 
 export async function GET(request){
@@ -63,8 +64,19 @@ export async function PUT(request, route){
         }
 
         const user = await updatedUser.save()
+        const tokenData = {
+            id: user._id,
+            username: user.username,
+            email: user.email,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            points: user.points
+        }
+
+        // Create a token with expiration of 1 day
+        const token = await jwt.sign(tokenData, process.env?.TOKEN_SECRET, {expiresIn: "1d"})
         if(user){
-            return new Response(jsonRes({msg: "success"}), {status: 200});
+            return new Response(jsonRes({response: {...tokenData, token}, msg: "success"}), {status: 200});
         }else{
             return new Response(jsonRes({msg: "Unable to update user profile"}), {status: 400});
         }

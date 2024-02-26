@@ -7,6 +7,7 @@ import { IoCreateOutline } from "react-icons/io5";
 import { BiLogOutCircle } from "react-icons/bi";
 import { useAuthContext } from '@/context/AuthContext.context';
 import { FiUsers } from 'react-icons/fi';
+import { RiContactsLine } from 'react-icons/ri';
 
 const Sidebar = () => {
     const {logout, userInfo} = useAuthContext()
@@ -36,6 +37,11 @@ const Sidebar = () => {
                 {userInfo.isAdmin == true && <div className='flex justify-center w-full rounded-[5px] text-[#a8a7a7] hover:text-white p-4 hover:ease-linear hover:bg-[#0169FD]'>
                     <Link href={"/dashboard/users"}>
                         <FiUsers className="font-bold" fontSize={"2rem"} />
+                    </Link>
+                </div>}
+                {userInfo.isAdmin == true && <div className='flex justify-center w-full rounded-[5px] text-[#a8a7a7] hover:text-white p-4 hover:ease-linear hover:bg-[#0169FD]'>
+                    <Link href={"/dashboard/contacts"}>
+                        <RiContactsLine className="font-bold" fontSize={"2rem"} />
                     </Link>
                 </div>}
             </div>

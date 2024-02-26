@@ -7,6 +7,18 @@ import UpgradeNotice from './UpgradeNotice';
 const RootComponent = ({children}) => {
   const {fetchUserDetails, isLoading, userInfo} = useAuthContext()
 
+  // useEffect(()=>{
+  //   if(typeof window !== "undefined"){
+  //     const tokenCookie = document.cookie
+  //     .split('; ')
+  //     .find(row => row.startsWith('token'));
+
+  //     if(!tokenCookie){
+  //       window.location.href = "/login";
+  //     }
+  //   }
+  // },[])
+
   useEffect(()=>{
     fetchUserDetails();
   },[isLoading])

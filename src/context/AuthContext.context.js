@@ -15,6 +15,8 @@ export const AuthProvider = ({children})=>{
     const [leads, setLeads] = useState([])
     const [users, setUsers] = useState([])
     const [isUserFetching, setIsUserFetching] = useState(false);
+    const [isContactFetching, setIsContactFetching] = useState(false);
+    const [contacts, setContacts] = useState([])
 
     const testing = "Just test my Context API State Management";
 
@@ -32,7 +34,7 @@ export const AuthProvider = ({children})=>{
             const err = error.response?.data
             setIsLoading(false)
             console.log(err.msg)
-            toast(err.msg)
+            // toast(err.msg)
         }
     }
 
@@ -52,7 +54,7 @@ export const AuthProvider = ({children})=>{
         }catch(error){
             const err = error.response?.data
             setIsLoading(false)
-            toast(err.msg)
+            // toast(err.msg)
         }
     }
 
@@ -127,6 +129,20 @@ export const AuthProvider = ({children})=>{
         }
     }
 
+    
+    async function fetchAllContacts(){
+        setIsContactFetching(true)
+        try {
+            const {data} = await axios.get(`/api/contact`);
+            setContacts(data.response)
+            setIsContactFetching(false)
+        } catch (error) {
+            const err = error.response?.data;
+            setIsContactFetching(false)
+            toast(err?.msg)
+        }
+    }
+
 
     async function deleteUser(userId){
         setIsLoading(true)
@@ -188,6 +204,9 @@ export const AuthProvider = ({children})=>{
             fetchUserDetails,
             userInfo,
             fetchAllLeads,
+            fetchAllContacts,
+            contacts,
+            isContactFetching,
             fetchAllUsers,
             isUserFetching,
             rewardUserByUserId,

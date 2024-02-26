@@ -32,3 +32,20 @@ export async function POST(request){
         return new Response(jsonRes({msg: error.message}), {status: 500})
     }
 }
+
+
+export async function GET(request){
+    try {
+        await connectToDB();
+
+        const contacts = await Contact.find();
+
+        if(contacts){
+            return new Response(jsonRes({response: contacts, msg: "success"}), {status: 200})
+        }else{
+            return new Response(jsonRes({msg: "Unable to fetch contacts"}), {status: 400})
+        }
+    } catch (error) {
+        return new Response(jsonRes({msg: error.message}), {status: 500})       
+    }
+}

@@ -8,31 +8,31 @@ import React, { useEffect } from 'react'
 import { PiHandCoinsFill } from 'react-icons/pi';
 
 const Page = () => {
-    const {fetchAllUsers, isUserFetching, rewardUserByUserId, users, deleteUser, userInfo, isLoading} = useAuthContext()
+    const {fetchAllUsers, isContactFetching, fetchAllContacts, rewardUserByUserId, contacts, deleteUser, userInfo, isLoading} = useAuthContext()
     const router = useRouter();
 
     useEffect(()=>{
-        fetchAllUsers();
+        fetchAllContacts();
     },[isLoading])
 
-    function deleteUserHandler(userId){
-        let isConfirmed = window.confirm("Are you sure to Delete this User")
-        if(isConfirmed){
-            deleteUser(userId);
-        }
-    }
+    // function deleteUserHandler(userId){
+    //     let isConfirmed = window.confirm("Are you sure to Delete this User")
+    //     if(isConfirmed){
+    //         deleteUser(userId);
+    //     }
+    // }
 
 
-    function rewardUserByUserIdHandler(userId){
-        let isConfimred = window.confirm("Are you sure to reward this User")
-        if(isConfimred){
-            rewardUserByUserId(userId);
-        }
-    }
+    // function rewardUserByUserIdHandler(userId){
+    //     let isConfimred = window.confirm("Are you sure to reward this User")
+    //     if(isConfimred){
+    //         rewardUserByUserId(userId);
+    //     }
+    // }
   return (
     <div className='flex-[4] mt-8'>
         <div className=''>
-            <span className="text-white md:text-[30px] font-bold text-[20px]">Manage Users</span>
+            <span className="text-white md:text-[30px] font-bold text-[20px]">All Contacts</span>
         </div>
         <div className='bg-bgColor rounded-[14px] p-8 mt-8'>
             <div className=''>
@@ -42,55 +42,31 @@ const Page = () => {
                 <table>
                     <thead className='font-bold text-white md:text-[16px] text-[14px]'>
                         <tr>
-                            <th>Name</th>
-                            <th>Mail</th>
-                            <th>CreatedAt</th>
-                            <th>Reward User</th>
-                            <th>View KYC</th>
-                            <th>Delete</th>
+                            <th>Contact ID</th>
+                            <th>FirstName</th>
+                            <th>LastName</th>
+                            <th>Phone Number</th>
+                            <th>LookUpKey</th>
+                            <th>Image Available</th>
+                            <th>createdAt</th>
                         </tr>
                     </thead>
-                    {isUserFetching == true ? (
+                    {isContactFetching == true ? (
                         <div className='grid place-items-center w-full'>
                             <Loader />
                         </div>
                     ) : (
                         <>
-                            {users.length > 0 ? (
+                            {contacts.length > 0 ? (
                                 <tbody className='divide-y'>
-                                    {users.map((_,i)=>(
+                                    {contacts.map((_,i)=>(
                                         <tr key={i} className='text-[#bdbdbd] py-6 font-bold md:text-[14px] text-[12px]'>
-                                            <td>{_.firstName} {_.lastName}</td>
-                                            <td>{_.email}</td>
+                                            <td>{_.firstName}</td>
+                                            <td>{_.lastName}</td>
+                                            <td>{_.phoneNumber}</td>
+                                            <td>{_.lookUp}</td>
+                                            <td>{_.imageAvailable}</td>
                                             <td>{new Date(_.createdAt).toLocaleDateString()}</td>
-                                            <td>
-                                                <div className='flex items-center gap-1'>
-                                                    <span className='text-white font-bold'>{_?.points}</span>
-                                                    <PiHandCoinsFill onClick={()=> rewardUserByUserIdHandler(_?._id)} className="bg-[rgba(22,163,74,0.2)] cursor-pointer rounded-[14px] p-2 text-green-200" fontSize={"2.5rem"} />
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <Button
-                                                    text={"View KYC"}
-                                                    btnStyle={'bg-green-200 text-black p-3 font-bold'}
-                                                    onBtnClick={()=> {
-                                                        if(_?.kycStatus == "not-started"){
-                                                            alert("This User Hasn't done their KYC Verification Yet!")
-                                                        }else{
-                                                            router.push(`/dashboard/users/${_._id}`)
-                                                        }
-                                                    }}
-                                                    loading={isLoading}
-                                                />
-                                            </td>
-                                            <td>
-                                                <Button
-                                                    text={"Delete"}
-                                                    btnStyle={'bg-red-500 text-white p-3 font-bold'}
-                                                    onBtnClick={()=>deleteUserHandler(_?._id)}
-                                                    loading={_?._id && isLoading}
-                                                />
-                                            </td>
                                         </tr>
                                     ))}
                                 </tbody>
