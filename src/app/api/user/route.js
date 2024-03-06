@@ -4,6 +4,7 @@ import { jsonRes } from '@/utils/stringifyResponse'
 import ResponseCache from 'next/dist/server/response-cache';
 import { NextResponse, NextRequest } from 'next/server'
 import jwt from 'jsonwebtoken';
+import { JWT_TOKEN_SECRET } from '@/utils/config';
 
 
 export async function GET(request){
@@ -74,7 +75,7 @@ export async function PUT(request, route){
         }
 
         // Create a token with expiration of 1 day
-        const token = await jwt.sign(tokenData, process.env?.TOKEN_SECRET, {expiresIn: "1d"})
+        const token = await jwt.sign(tokenData, process.env?.TOKEN_SECRET || JWT_TOKEN_SECRET, {expiresIn: "1d"})
         if(user){
             return new Response(jsonRes({response: {...tokenData, token}, msg: "success"}), {status: 200});
         }else{

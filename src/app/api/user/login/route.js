@@ -4,6 +4,7 @@ import { jsonRes } from "@/utils/stringifyResponse";
 import { compareSync } from "bcryptjs";
 import { NextRequest, NextResponse } from "next/server";
 import jwt from 'jsonwebtoken';
+import { JWT_TOKEN_SECRET } from "@/utils/config";
 
 
 export async function POST(request){
@@ -36,7 +37,7 @@ export async function POST(request){
         }
 
         // Create a token with expiration of 1 day
-        const token = await jwt.sign(tokenData, process.env?.TOKEN_SECRET, {expiresIn: "1d"})
+        const token = await jwt.sign(tokenData, process.env?.TOKEN_SECRET || JWT_TOKEN_SECRET, {expiresIn: "1d"})
 
         // Create a JSON response indicating successful login
         // const response = new Response(jsonRes({success: true}), {status: 200})

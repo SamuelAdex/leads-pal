@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { MONGO_URL } from "./config";
 
 let isConnected = false; // track the connection
 
@@ -11,7 +12,7 @@ export const connectToDB = async () => {
   }
 
   try {
-    await mongoose.connect(process.env.MONGODB_URI, {
+    await mongoose.connect(process.env.MONGODB_URI || MONGO_URL, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
