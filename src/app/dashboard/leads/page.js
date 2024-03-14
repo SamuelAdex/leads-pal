@@ -71,11 +71,11 @@ const Page = () => {
   return (
     <div className='mt-[2rem] relative'>
         <div className=''>
-            <span className='md:text-[25px] text-[16px] font-bold text-white'>Create New Leads</span>
+            <span className='md:text-[25px] text-[16px] font-bold text-black'>Create New Leads</span>
         </div>
         <div className='flex md:flex-row flex-col gap-4 mt-3'>
             <div className='flex-[3]'>
-                <div className='md:w-[450px] w-full p-8 rounded-[14px] bg-bgColor shadow-md'>
+                <div className='md:w-[450px] w-full p-8 border-[2px] border-[#fafaf5] rounded-[14px] bg-white'>
                     <div className=''>
                         <span className='text-white font-bold md:text-[20px] text-[16px]'>Add New Leads</span>
                     </div>
@@ -94,7 +94,7 @@ const Page = () => {
                         </select>
                         <Button 
                             text={"Submit"}
-                            btnStyle={`text-white font-bold p-3 rounded-[9px] bg-bgPrimary`}
+                            btnStyle={`text-white font-bold p-3 rounded-[9px] bg-bgSecondary`}
                             onBtnClick={newLeadHandler}
                             loading={isLoading}
                         />
@@ -102,13 +102,13 @@ const Page = () => {
                 </div>
             </div>
             <div className='flex-[4]'>
-                <div className='bg-bgColor rounded-[14px] p-8'>
+                <div className='bg-white border-[2px] border-[#fafaf5] rounded-[14px] p-8'>
                     <div className=''>
                         <input type="text" placeholder='Search' className='p-3 border-[2px] bg-transparent border-[#bdbdbd] rounded-[9px] w-full' />
                     </div>
                     <div className='mt-3 overflow-auto'>
                         <table>
-                            <thead className='font-bold text-white md:text-[16px] text-[14px]'>
+                            <thead className='font-bold text-black md:text-[16px] text-[14px]'>
                                 <tr>
                                     <th>Lead Name</th>
                                     <th>Lead Mail</th>
@@ -118,7 +118,7 @@ const Page = () => {
                             </thead>
                             <tbody className='divide-y'>
                                 {leads.map((_,i)=>(
-                                    <tr key={i} className='text-[#bdbdbd] py-6 font-bold md:text-[14px] text-[12px]'>
+                                    <tr key={i} className='text-[#353535] py-6 font-bold md:text-[14px] text-[12px]'>
                                         <td>{_.name}</td>
                                         <td>{_.email}</td>
                                         <td>{_.phone}</td>

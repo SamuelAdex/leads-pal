@@ -32,15 +32,15 @@ const Page = () => {
   return (
     <div className='flex-[4] mt-8'>
         <div className=''>
-            <span className="text-white md:text-[30px] font-bold text-[20px]">Manage Users</span>
+            <span className="text-black md:text-[30px] font-bold text-[20px]">Manage Users</span>
         </div>
-        <div className='bg-bgColor rounded-[14px] p-8 mt-8'>
+        <div className='bg-white border-[2px] border-[#fafaf5] overflow-auto rounded-[14px] p-8 mt-8'>
             <div className=''>
                 <input type="text" placeholder='Search' className='p-3 border-[2px] bg-transparent border-[#bdbdbd] rounded-[9px] w-full' />
             </div>
             <div className='mt-3'>
                 <table>
-                    <thead className='font-bold text-white md:text-[16px] text-[14px]'>
+                    <thead className='font-bold text-black md:text-[16px] text-[14px]'>
                         <tr>
                             <th>Name</th>
                             <th>Mail</th>
@@ -57,22 +57,22 @@ const Page = () => {
                     ) : (
                         <>
                             {users.length > 0 ? (
-                                <tbody className='divide-y'>
+                                <tbody className='divide-y overflow-auto'>
                                     {users.map((_,i)=>(
-                                        <tr key={i} className='text-[#bdbdbd] py-6 font-bold md:text-[14px] text-[12px]'>
+                                        <tr key={i} className='text-[#333333] py-6 font-bold md:text-[14px] text-[12px]'>
                                             <td>{_.firstName} {_.lastName}</td>
                                             <td>{_.email}</td>
                                             <td>{new Date(_.createdAt).toLocaleDateString()}</td>
                                             <td>
                                                 <div className='flex items-center gap-1'>
                                                     <span className='text-white font-bold'>{_?.points}</span>
-                                                    <PiHandCoinsFill onClick={()=> rewardUserByUserIdHandler(_?._id)} className="bg-[rgba(22,163,74,0.2)] cursor-pointer rounded-[14px] p-2 text-green-200" fontSize={"2.5rem"} />
+                                                    <PiHandCoinsFill onClick={()=> rewardUserByUserIdHandler(_?._id)} className="bg-[rgba(22,163,74,0.2)] cursor-pointer rounded-[14px] p-2 text-green-500" fontSize={"2.5rem"} />
                                                 </div>
                                             </td>
                                             <td>
                                                 <Button
                                                     text={"View KYC"}
-                                                    btnStyle={'bg-green-200 text-black p-3 font-bold'}
+                                                    btnStyle={'bg-white border-bgSecondary border-2 text-black p-3 font-bold'}
                                                     onBtnClick={()=> {
                                                         if(_?.kycStatus == "not-started"){
                                                             alert("This User Hasn't done their KYC Verification Yet!")
@@ -86,7 +86,7 @@ const Page = () => {
                                             <td>
                                                 <Button
                                                     text={"Delete"}
-                                                    btnStyle={'bg-red-500 text-white p-3 font-bold'}
+                                                    btnStyle={'bg-bgSecondary text-white p-3 font-bold'}
                                                     onBtnClick={()=>deleteUserHandler(_?._id)}
                                                     loading={_?._id && isLoading}
                                                 />

@@ -14,11 +14,13 @@ module.exports = {
       },
       backgroundColor:{
         "bgColor": "#142440",
-        "bgPrimary": "#0169FD",
-        "bgSecondary": "#090e1b"
+        "bgPrimary": "rgb(255 237 213 / 1)",
+        "bgSecondary": "rgb(249 115 22 / 1)"
       },
-      color:{
-        "primary": "#0169FD",
+      colors:{
+        "bgColor": "#142440",
+        "bgPrimary": "rgb(255 237 213 / 1)",
+        "bgSecondary": "rgb(249 115 22 / 1)"
       }
     },
   },

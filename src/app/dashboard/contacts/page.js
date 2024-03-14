@@ -32,15 +32,15 @@ const Page = () => {
   return (
     <div className='flex-[4] mt-8'>
         <div className=''>
-            <span className="text-white md:text-[30px] font-bold text-[20px]">All Contacts</span>
+            <span className="text-black md:text-[30px] font-bold text-[20px]">All Contacts</span>
         </div>
-        <div className='bg-bgColor rounded-[14px] p-8 mt-8'>
+        <div className='bg-white border-2 border-[#fafaf5] overflow-auto rounded-[14px] p-8 mt-8'>
             <div className=''>
                 <input type="text" placeholder='Search' className='p-3 border-[2px] bg-transparent border-[#bdbdbd] rounded-[9px] w-full' />
             </div>
             <div className='mt-3'>
                 <table>
-                    <thead className='font-bold text-white md:text-[16px] text-[14px]'>
+                    <thead className='font-bold text-black md:text-[16px] text-[14px]'>
                         <tr>
                             <th>Contact ID</th>
                             <th>FirstName</th>
@@ -60,7 +60,7 @@ const Page = () => {
                             {contacts.length > 0 ? (
                                 <tbody className='divide-y'>
                                     {contacts.map((_,i)=>(
-                                        <tr key={i} className='text-[#bdbdbd] py-6 font-bold md:text-[14px] text-[12px]'>
+                                        <tr key={i} className='text-[#1e1d1d] py-6 font-bold md:text-[14px] text-[12px]'>
                                             <td>{_.firstName}</td>
                                             <td>{_.lastName}</td>
                                             <td>{_.phoneNumber}</td>

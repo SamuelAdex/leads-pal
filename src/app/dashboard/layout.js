@@ -1,11 +1,28 @@
 import { Inter } from "next/font/google";
 import "../globals.css";
 import Sidebar from "@/components/Sidebar";
+import localFont from "next/font/local";
 import Header from "@/components/Header";
 import RootComponent from "@/components/RootComponent";
 
 
-const inter = Inter({ subsets: ["latin"] });
+const myfont = localFont({
+  src: [
+    {
+      path: "../../../public/fonts/Roboto-Regular.ttf",
+      weight: "400",
+    },
+    {
+      path: "../../../public/fonts/Roboto-Bold.ttf",
+      weight: "700",
+    },
+    {
+      path: "../../../public/fonts/Roboto-Black.ttf",
+      weight: "900",
+    },
+  ],
+  variable: "--font-satoshi",
+});
 
 export const metadata = {
   title: "Create Next App",
@@ -15,7 +32,7 @@ export const metadata = {
 export default function Layout({ children }) {
   return (
     <html lang="en">
-      <body className={`${inter.className}`}>
+      <body className={`${myfont.className} bg-[#fff]`}>
         <div className="p-[1.6rem]">
             <Sidebar />
             <main className="lg:ml-[7.7rem]">

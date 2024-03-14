@@ -74,9 +74,9 @@ const Page = ({params}) => {
   return (
     <div className='flex-[4] mt-8'>
         <div className=''>
-            <span className="text-white md:text-[30px] font-bold text-[20px]">Verify User KYC</span>
+            <span className="text-black md:text-[30px] font-bold text-[20px]">Verify User KYC</span>
         </div>
-        <div className="text-white font-bold flex flex-col gap-6">
+        <div className="text-black font-bold flex flex-col gap-6">
             <div className='overflow-auto'>
                 <table className='overflow-auto'>
                     <thead className='text-primary'>
@@ -137,7 +137,7 @@ const Page = ({params}) => {
             </div>
             {data.isKyc == true ? (
                 <div className=''>
-                    <div className='grid place-items-center p-6 rounded-[14px] bg-green-100 bg-opacity-[2] text-opacity-[100%] border-[5px] border-green-500 border-spacing-2'>
+                    <div className='grid place-items-center p-6 rounded-[14px] bg-green-500 bg-opacity-[2] text-opacity-[100%] border-[5px] border-green-500 border-spacing-2'>
                         <span className='text-[#000]'>This User KYC has Been Verified</span>
                     </div>
                 </div>
@@ -151,7 +151,7 @@ const Page = ({params}) => {
                     />
                     <Button
                         text={"Verify KYC"}
-                        btnStyle={"bg-bgPrimary md:p-3 p-2 w-full text-white font-bold md:text-[16px] text-[13px]"}
+                        btnStyle={"bg-bgSecondary md:p-3 p-2 w-full text-white font-bold md:text-[16px] text-[13px]"}
                         onBtnClick={verifyKYCHandler}
                         loa1ding={isVerify}
                     />

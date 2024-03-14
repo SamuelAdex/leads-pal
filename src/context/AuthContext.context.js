@@ -54,7 +54,7 @@ export const AuthProvider = ({children})=>{
         }catch(error){
             const err = error.response?.data
             setIsLoading(false)
-            // toast(err.msg)
+            toast(err.msg)
         }
     }
 
@@ -67,7 +67,7 @@ export const AuthProvider = ({children})=>{
         } catch (error) {
             const err = error.response?.data
             setIsLoading(false)
-            toast(err.msg)
+            // toast(err.msg)
         }
     }
 

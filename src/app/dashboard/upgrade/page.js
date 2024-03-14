@@ -84,18 +84,18 @@ const Page = ()=>{
     return (
         <div className='mt-[2rem] flex md:flex-row flex-col gap-8 relative'>
             <div className='flex-[3]'>
-                <div className='rounded-[14px] flex flex-col gap-3 p-4 bg-bgColor'>
-                    <h1 className='text-white font-bold text-[30px]'>Start your KYC to Upgrade your Account</h1>
+                <div className='rounded-[14px] flex flex-col gap-3 p-4 bg-[#fff] border-2 rounded-[12px] border-[#fafaf5]'>
+                    <h1 className='text-black font-bold text-[30px]'>Start your KYC to Upgrade your Account</h1>
                     <p className=''></p>
                    <Button
                         text={userInfo.kycStatus === "pending" ? "Reviewing" : userInfo.kycStatus === "completed" ? "Completed" : userInfo.kycStatus === "rejected" ? 'Rejected' : 'Not Started'}
-                        btnStyle={"bg-bgPrimary p-4 text-white font-bold text-[14px]"}
+                        btnStyle={"bg-bgSecondary p-4 text-white font-bold text-[14px]"}
                     />
                 </div>
             </div>
             <div className='flex-[4]'>
-                <div className='rounded-[12px] p-4 bg-bgColor'>
-                    <div className='rounded-[12px] p-4 bg-bgSecondary text-[#bdbdbd]'>
+                <div className='rounded-[12px] p-4 border-2 border-[#fafaf5]'>
+                    <div className='rounded-[12px] p-4 text-[#000] border-2 border-[#fafaf5]'>
                         <p className=''>Kindly fill in the details below carefully and with caution, in order to proceed to the verification of your kyc</p>
                     </div>
                     <div className='w-full mt-4'>
@@ -129,7 +129,7 @@ const Page = ()=>{
 
                         <Button
                             text={'Submit'}
-                            btnStyle={'bg-bgPrimary text-white p-4 font-bold text-[14px] w-full mt-4'}
+                            btnStyle={'bg-bgSecondary text-white p-4 font-bold text-[14px] w-full mt-4'}
                             onBtnClick={kycHandler}
                             loading={isLoading}
                         />

@@ -5,7 +5,7 @@ import { SiGoogleadsense } from "react-icons/si";
 import { RiGift2Line } from "react-icons/ri";
 import { FiUsers } from "react-icons/fi";
 import { PiHandCoinsFill } from "react-icons/pi";
-import { MdAdd } from 'react-icons/md';
+import { MdAdd, MdRemoveCircleOutline } from 'react-icons/md';
 import Modal from '@/components/Modal';
 import Button from '@/components/Button';
 import { useAuthContext } from '@/context/AuthContext.context';
@@ -85,65 +85,65 @@ const Page = () => {
     <div className='mt-[2rem] flex md:flex-row flex-col gap-8 relative'>
         <div className='flex-[3]'>
             <div className='grid grid-cols-2 gap-5'>
-                <div className='flex items-center gap-4 bg-bgColor rounded-[20px] shadow-sm p-4'>
-                    <div className='bg-[rgba(22,163,74,0.2)] rounded-[14px] p-3'>
-                        <SiGoogleadsense className="rounded-[12px] text-green-200" fontSize={"3rem"} />
+                <div className='flex items-center gap-4 bg-[#fff] border-[2px] border-[#fafaf5] rounded-[20px] p-4'>
+                    <div className='bg-bgPrimary rounded-[14px] p-3'>
+                        <SiGoogleadsense className="rounded-[12px] text-bgSecondary" fontSize={"3rem"} />
                     </div>
                     <div className='flex flex-col gap-[3px]'>
-                        <span className='md:text-[10px] text-[8px] font-bold text-[#bdbdbd]'>Leads</span>
-                        <span className='md:text-[20px] text-[16px] font-bold text-white'>{userLeads?.length}</span>
+                        <span className='md:text-[10px] text-[8px] font-bold text-[#000]'>Leads</span>
+                        <span className='md:text-[20px] text-[16px] font-bold text-[#000]'>{userLeads?.length}</span>
                     </div>
                 </div>
-                <div className='flex items-center gap-4 bg-bgColor rounded-[20px] shadow-sm p-4'>
-                    <div className='bg-[rgba(1,105,253,0.2)] rounded-[14px] p-3'>
-                        <RiGift2Line className="rounded-[12px] text-[#0169FD]" fontSize={"3rem"} />
+                <div className='flex items-center gap-4 bg-[#fff] border-[2px] border-[#fafaf5] rounded-[20px] p-4'>
+                    <div className='bg-bgPrimary rounded-[14px] p-3'>
+                        <RiGift2Line className="rounded-[12px] text-bgSecondary" fontSize={"3rem"} />
                     </div>
                     <div className='flex flex-col gap-[3px]'>
-                        <span className='md:text-[10px] text-[8px] font-bold text-[#bdbdbd]'>Rewards</span>
-                        <span className='md:text-[20px] text-[16px] font-bold text-white'>0</span>
+                        <span className='md:text-[10px] text-[8px] font-bold text-[#000]'>Rewards</span>
+                        <span className='md:text-[20px] text-[16px] font-bold text-[#000]'>0</span>
                     </div>
                 </div>
-                <div className='flex items-center gap-4 bg-bgColor rounded-[20px] shadow-sm p-4'>
-                    <div className='bg-[rgba(224,22,26,0.2)] rounded-[14px] p-3'>
-                        <FiUsers className="rounded-[12px] text-[#E0161A]" fontSize={"3rem"} />
+                {userInfo.isAdmin == true && <div className='flex items-center gap-4 bg-[#fff] border-[2px] border-[#fafaf5] rounded-[20px] p-4'>
+                    <div className='bg-bgPrimary rounded-[14px] p-3'>
+                        <FiUsers className="rounded-[12px] text-bgSecondary" fontSize={"3rem"} />
                     </div>
                     <div className='flex flex-col gap-[3px]'>
-                        <span className='md:text-[10px] text-[8px] font-bold text-[#bdbdbd]'>Total Users</span>
-                        <span className='md:text-[20px] text-[16px] font-bold text-white'>{users.length}</span>
+                        <span className='md:text-[10px] text-[8px] font-bold text-[#000]'>Total Users</span>
+                        <span className='md:text-[20px] text-[16px] font-bold text-[#000]'>{users.length}</span>
                     </div>
-                </div>
-                <div className='flex items-center gap-4 bg-bgColor rounded-[20px] shadow-sm p-4'>
-                    <div className='bg-[rgba(22,163,74,0.2)] rounded-[14px] p-3'>
-                        <PiHandCoinsFill className="rounded-[12px] text-green-200" fontSize={"3rem"} />
+                </div>}
+                <div className='flex items-center gap-4 bg-[#fff] border-[2px] border-[#fafaf5] rounded-[20px] p-4'>
+                    <div className='bg-bgPrimary rounded-[14px] p-3'>
+                        <PiHandCoinsFill className="rounded-[12px] text-bgSecondary" fontSize={"3rem"} />
                     </div>
                     <div className='flex flex-col gap-[3px]'>
-                        <span className='md:text-[10px] text-[8px] font-bold text-[#bdbdbd]'>Point</span>
-                        <span className='md:text-[20px] text-[16px] font-bold text-white'>{userInfo.points}</span>
+                        <span className='md:text-[10px] text-[8px] font-bold text-[#000]'>Point</span>
+                        <span className='md:text-[20px] text-[16px] font-bold text-[#000]'>{userInfo.points}</span>
                     </div>
                 </div>
             </div>
-            <div className='rounded-[20px] bg-bgColor mt-5 text-white p-7 h-[50%]'>
+            <div className='rounded-[20px] bg-[#fff] border-[2px] border-[#fafaf5] mt-5 text-black p-7 h-[50%]'>
                 Charts
             </div>
         </div>
         <div className='flex-[3]'>
-            <div className="bg-bgColor rounded-[20px] shadow-sm py-4 px-7">
+            <div className="bg-[#fff] rounded-[20px] border-[2px] border-[#fafaf5] py-4 px-7">
                 <div className="">
-                    <span className="md:text-[20px] text-[16px] font-bold text-white">All Leads</span>
+                    <span className="md:text-[20px] text-[16px] font-bold text-black">All Leads</span>
                 </div>
                 <div className="mt-3 divide-y-[0.7px] flex flex-col h-[20%] gap-3 overflow-auto">
                     {leads.map((_, i)=>(
-                        <div key={i} className="flex justify-between items-center py-3 text-[#bdbdbd] md:text-[15px] text-[13px]">
-                            <div className="flex items-center gap-2 text-[#bdbdbd]">
-                                <div className='bg-[rgba(22,163,74,0.2)] rounded-full p-2'>
-                                    <FiUsers className='text-green-200' fontSize={"1.2rem"} />
+                        <div key={i} className="flex justify-between items-center py-3 text-[#686767] md:text-[15px] text-[13px]">
+                            <div className="flex items-center gap-2">
+                                <div className='bg-bgPrimary rounded-full p-2'>
+                                    <FiUsers className='text-bgSecondary' fontSize={"1.2rem"} />
                                 </div>
                                 <span className="">{_.name}</span>
                             </div>
                             <div className="">
                                 <span className="">{new Date(_.createdAt).toLocaleDateString()}</span>
                             </div>
-                            <div className="flex items-center gap-1 text-yellow-600 font-semibold">
+                            <div className="flex items-center gap-1 text-bgSecondary font-semibold">
                                 <span className=''>10</span>
                                 <PiHandCoinsFill className="" fontSize={"1.3rem"} />
                             </div>
@@ -157,9 +157,10 @@ const Page = () => {
                 isOpen={isNewLead}
                 onCloseModal={()=> setIsNewLead(false)}
             >
-                <div className='md:w-[450px] w-full p-8 rounded-[14px] bg-bgColor shadow-md'>
-                    <div className=''>
-                        <span className='text-white font-bold md:text-[20px] text-[16px]'>Add New Leads</span>
+                <div className='md:w-[450px] w-full p-8 rounded-[14px] bg-white border-[2px] border-[#fafaf5] shadow-md'>
+                    <div className='flex justify-between items-center'>
+                        <span className='text-bgSecondary font-bold md:text-[20px] text-[16px]'>Add New Leads</span>
+                        <MdRemoveCircleOutline onClick={()=> setIsNewLead(false)} className='cursor-pointer' fontSize={'1.7rem'} />
                     </div>
                     <div className='flex flex-col gap-8 mt-4'>
                         <input value={data.name} onChange={(e)=> setData({...data, name: e.target.value})} type='text' placeholder='Leads name' className='bg-transparent border-[1px] text-[#bdbdbd] border-[#bdbdbd] p-3 rounded-[9px]' />
@@ -176,7 +177,7 @@ const Page = () => {
                         </select>
                         <Button 
                             text={"Submit"}
-                            btnStyle={`text-white font-bold p-3 rounded-[9px] bg-bgPrimary`}
+                            btnStyle={`text-white font-bold p-3 rounded-[9px] bg-bgSecondary`}
                             onBtnClick={newLeadHandler}
                             loading={isLoading}
                         />
@@ -184,7 +185,7 @@ const Page = () => {
                 </div>
             </Modal>
         )}
-        <button onClick={()=> setIsNewLead(true)} className='text-white rounded-full p-6 animate-bounce bg-[#0169FD] fixed bottom-3 right-6 active:bg-opacity-80 hover:bg-opacity-80'>
+        <button onClick={()=> setIsNewLead(true)} className='text-black rounded-[100%] border-[2px] border-[#fafaf5] bg-white px-5 cursor-pointer py-5 animate-bounce fixed bottom-3 right-6 active:bg-opacity-80 hover:bg-opacity-80'>
             <MdAdd fontSize={"2rem"} />
         </button>
     </div>
