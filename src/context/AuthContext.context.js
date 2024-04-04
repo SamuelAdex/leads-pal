@@ -21,10 +21,10 @@ export const AuthProvider = ({children})=>{
     const testing = "Just test my Context API State Management";
 
 
-    const register = async (firstName, lastName, username, email, password)=>{
+    const register = async (firstName, lastName, username, email, password, referral)=>{
         setIsLoading(true)
         try{
-            const {data} = await axios.post('/api/auth/register', {firstName, lastName, email, username, password}, {ContentType: "application/json"})            
+            const {data} = await axios.post('/api/auth/register', {firstName, lastName, email, username, password, referral}, {ContentType: "application/json"})            
             setIsLoading(false)
             if(data.msg == "success"){
                 toast("Account created successfully!")
@@ -34,7 +34,7 @@ export const AuthProvider = ({children})=>{
             const err = error.response?.data
             setIsLoading(false)
             console.log(err.msg)
-            // toast(err.msg)
+            toast(err.msg)
         }
     }
 

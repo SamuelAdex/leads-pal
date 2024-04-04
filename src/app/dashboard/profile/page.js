@@ -6,6 +6,7 @@ import Image from 'next/image';
 import React, { useState } from 'react'
 import { PiHandCoinsFill } from 'react-icons/pi';
 import { RiGift2Line } from 'react-icons/ri';
+import bgImg from '../../../../public/images/undraw_Logic.png'
 
 
 const Page = () => {
@@ -20,14 +21,14 @@ const Page = () => {
 
   return (
     <div className='mt-10'>
-        <div className='border-[1px] relative border-[#fafaf5] rounded-[12px] p-16 w-full h-full'>
-            <Image src={""} />
-            <div className='rounded-full absolute p-10 bg-bgSecondary border-[2px] left-[4rem] border-[#bdbdbd] grid place-items-center'>
-                <div className='text-white font-bold text-[40px]'>{userInfo?.firstName?.slice(0,1)}{userInfo?.lastName?.slice(0,1)}</div>
+        <div className='border-[1px] profile relative border-[#fafaf5] overflow-hidden bg-black md:p-20 p-10 rounded-[12px] w-full md:h-[300px]'>
+            {/* <Image src={bgImg} className='absolute w-full bg-opacity-[20%] -z-5' alt='' /> */}
+            <div className='rounded-full bg-bgSecondary w-[150px] h-[150px] grid place-items-center'>
+                <div className='text-white font-bold md:text-[50px] text-[40px]'>{userInfo?.firstName?.slice(0,1)}{userInfo?.lastName?.slice(0,1)}</div>
             </div>
         </div>
         <div className='grid md:grid-cols-2 grid-cols-1 mt-6 gap-6'>
-            <div className='bg-white border-2 border-[#fafaf5] rounded-[14px] p-8'>
+            <div className='bg-white md:block hidden border-2 border-[#fafaf5] rounded-[14px] p-8'>
                 <div className="mt-14 grid md:grid-cols-2 grid-cols-1 items-center gap-4">
                     <div className='flex items-center gap-4 bg-white bg-opacity-[0.5] rounded-[20px] shadow-sm p-4'>
                         <div className='bg-[rgba(22,163,74,0.2)] rounded-[14px] p-3'>

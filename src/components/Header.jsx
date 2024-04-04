@@ -17,11 +17,11 @@ const Header = () => {
   return (
     <div className='flex items-center relative'>
         <div className='flex-[4]'>
-            <span className='text-[25px] text-bgSecondary font-bold'>Welcome, {userInfo?.firstName}</span>
+            <span className='text-[25px] text-gray-500 font-bold'>Welcome, {userInfo?.firstName}</span>
         </div>
         <div className='flex items-center gap-3 flex-[3]'>
             <div className='w-full flex items-center gap-3 justify-end'>
-                <div className='md:flex hidden items-center flex-[2] gap-1 w-full bg-white border-[2px] border-[#fafaf5] rounded-[14px] p-2'>
+                <div className='md:flex hidden items-center flex-[2] gap-1 w-full bg-transparent border-[2px] border-[#fafaf5] rounded-[14px] p-2'>
                     <RiSearchLine className='text-[#000]' fontSize={"1.5rem"} />
                     <input type="text" placeholder='Search' className='bg-transparent text-[#000] border-none text-[12px] focus:outline-none w-full' />
                 </div>
@@ -88,10 +88,10 @@ function MobileNav({setIsShow}){
           },
     ]
     return (
-        <div className='bg-white px-4 py-8 fixed md:hidden flex flex-col top-0 w-[100%] ml-[-20px] z-20 h-[100dvh] overflow-auto slide-left'>
+        <div className='bg-black px-4 py-8 fixed md:hidden flex flex-col top-0 w-[100%] ml-[-20px] z-20 h-[100dvh] overflow-auto slide-left'>
             <div className='flex justify-between items-center'>
                 <span className="text-[24px] font-bold">Leads-Pal</span>
-                <MdRemoveCircleOutline fontSize={"2rem"} onClick={()=> setIsShow(false)} className='text-bgSecondary cursor-pointer' />
+                <MdRemoveCircleOutline fontSize={"2rem"} onClick={()=> setIsShow(false)} className='text-gray-200 cursor-pointer' />
             </div>
             <div className='grid place-items-center'>
                 <div className='flex flex-col gap-5 divide-y w-full'>
@@ -99,7 +99,7 @@ function MobileNav({setIsShow}){
                         const isActive = pathname == link.href;
                         return (
                             <Link href={"#"} key={index} className='text-center pt-4 w-full'>
-                                <span className={`${isActive ? 'text-bgSecondary' : 'text-black'} hover:text-bgSecondary active:text-bgSecondary font-bold text-center text-[14px]`}>{link.name}</span>
+                                <span className={`${isActive ? 'text-white' : 'text-gray-200'} hover:text-gray-200 active:text-gray-200 font-bold text-center text-[14px]`}>{link.name}</span>
                             </Link>
                         )                
                     })}

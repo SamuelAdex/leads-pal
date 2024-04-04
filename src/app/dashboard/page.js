@@ -24,6 +24,7 @@ const Page = () => {
     })
     const [userLeads, setUserLeads] = useState([])
     const [isLoading, setIsLoading] = useState(false)
+    const [earning, setEarning] = useState(0)
     const router = useRouter();
 
     function resetInput(){
@@ -73,6 +74,27 @@ const Page = () => {
 
         fetchLeads()
     },[isLoading, userInfo?._id])
+    
+    
+    useEffect(()=>{
+        async function fetchPoint(){
+            try {
+                const {data} = await axios.get(`/api/admin/points`);
+                if(data.msg === "success"){
+                    setEarning(data.response)
+                }
+
+            } catch (error) {
+                const err = error.response?.data;
+                // setIsLoading(false)
+                toast(err?.msg)
+            }
+        }
+
+        fetchPoint()
+    
+    }, [])
+
 
     useEffect(()=>{
         fetchAllLeads()
@@ -85,7 +107,7 @@ const Page = () => {
     <div className='mt-[2rem] flex md:flex-row flex-col gap-8 relative'>
         <div className='flex-[3]'>
             <div className='grid grid-cols-2 gap-5'>
-                <div className='flex items-center gap-4 bg-[#fff] border-[2px] border-[#fafaf5] rounded-[20px] p-4'>
+                <div className='flex items-center gap-4 bg-gray-200 border-[2px] border-[#fafaf5] rounded-[20px] p-4'>
                     <div className='bg-bgPrimary rounded-[14px] p-3'>
                         <SiGoogleadsense className="rounded-[12px] text-bgSecondary" fontSize={"3rem"} />
                     </div>
@@ -94,25 +116,34 @@ const Page = () => {
                         <span className='md:text-[20px] text-[16px] font-bold text-[#000]'>{userLeads?.length}</span>
                     </div>
                 </div>
-                <div className='flex items-center gap-4 bg-[#fff] border-[2px] border-[#fafaf5] rounded-[20px] p-4'>
+                <div className='flex items-center gap-4 bg-gray-200 border-[2px] border-[#fafaf5] rounded-[20px] p-4'>
                     <div className='bg-bgPrimary rounded-[14px] p-3'>
                         <RiGift2Line className="rounded-[12px] text-bgSecondary" fontSize={"3rem"} />
                     </div>
                     <div className='flex flex-col gap-[3px]'>
-                        <span className='md:text-[10px] text-[8px] font-bold text-[#000]'>Rewards</span>
-                        <span className='md:text-[20px] text-[16px] font-bold text-[#000]'>0</span>
+                        <span className='md:text-[10px] text-[8px] font-bold text-[#000]'>Earnings</span>
+                        <span className='md:text-[20px] text-[16px] font-bold text-[#000]'>₹{eval(userInfo?.points * earning[0]?.cashEquivalent)}</span>
                     </div>
                 </div>
-                {userInfo.isAdmin == true && <div className='flex items-center gap-4 bg-[#fff] border-[2px] border-[#fafaf5] rounded-[20px] p-4'>
+                {userInfo.isAdmin == true && <div className='flex items-center gap-4 bg-gray-200 border-[2px] border-[#fafaf5] rounded-[20px] p-4'>
                     <div className='bg-bgPrimary rounded-[14px] p-3'>
                         <FiUsers className="rounded-[12px] text-bgSecondary" fontSize={"3rem"} />
                     </div>
                     <div className='flex flex-col gap-[3px]'>
                         <span className='md:text-[10px] text-[8px] font-bold text-[#000]'>Total Users</span>
-                        <span className='md:text-[20px] text-[16px] font-bold text-[#000]'>{users.length}</span>
+                        <span className='md:text-[20px] text-[16px] font-bold text-[#000]'>{users?.length}</span>
                     </div>
                 </div>}
-                <div className='flex items-center gap-4 bg-[#fff] border-[2px] border-[#fafaf5] rounded-[20px] p-4'>
+                {userInfo?.isAdmin !== true && <div className='flex items-center gap-4 bg-gray-200 border-[2px] border-[#fafaf5] rounded-[20px] p-4'>
+                    <div className='bg-bgPrimary rounded-[14px] p-3'>
+                        <FiUsers className="rounded-[12px] text-bgSecondary" fontSize={"3rem"} />
+                    </div>
+                    <div className='flex flex-col gap-[3px]'>
+                        <span className='md:text-[10px] text-[8px] font-bold text-[#000]'>Total Referrals</span>
+                        <span className='md:text-[20px] text-[16px] font-bold text-[#000]'>{userInfo?.total_referrals}</span>
+                    </div>
+                </div>}
+                <div className='flex items-center gap-4 bg-gray-200 border-[2px] border-[#fafaf5] rounded-[20px] p-4'>
                     <div className='bg-bgPrimary rounded-[14px] p-3'>
                         <PiHandCoinsFill className="rounded-[12px] text-bgSecondary" fontSize={"3rem"} />
                     </div>
@@ -122,12 +153,12 @@ const Page = () => {
                     </div>
                 </div>
             </div>
-            <div className='rounded-[20px] bg-[#fff] border-[2px] border-[#fafaf5] mt-5 text-black p-7 h-[50%]'>
+            <div className='rounded-[20px] bg-transparent border-[2px] border-[#fafaf5] mt-5 text-black p-7 h-[50%]'>
                 Charts
             </div>
         </div>
         <div className='flex-[3]'>
-            <div className="bg-[#fff] rounded-[20px] border-[2px] border-[#fafaf5] py-4 px-7">
+            <div className="rounded-[20px] border-[2px] bg-gray-200 border-[#fafaf5] py-4 px-7">
                 <div className="">
                     <span className="md:text-[20px] text-[16px] font-bold text-black">All Leads</span>
                 </div>
@@ -135,15 +166,15 @@ const Page = () => {
                     {leads.map((_, i)=>(
                         <div key={i} className="flex justify-between items-center py-3 text-[#686767] md:text-[15px] text-[13px]">
                             <div className="flex items-center gap-2">
-                                <div className='bg-bgPrimary rounded-full p-2'>
-                                    <FiUsers className='text-bgSecondary' fontSize={"1.2rem"} />
+                                <div className='bg-gray-500 rounded-full p-2'>
+                                    <FiUsers className='text-gray-200' fontSize={"1.2rem"} />
                                 </div>
                                 <span className="">{_.name}</span>
                             </div>
                             <div className="">
                                 <span className="">{new Date(_.createdAt).toLocaleDateString()}</span>
                             </div>
-                            <div className="flex items-center gap-1 text-bgSecondary font-semibold">
+                            <div className="flex items-center gap-1 text-gray-500 font-semibold">
                                 <span className=''>10</span>
                                 <PiHandCoinsFill className="" fontSize={"1.3rem"} />
                             </div>

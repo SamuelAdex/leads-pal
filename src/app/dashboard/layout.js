@@ -32,7 +32,7 @@ export const metadata = {
 export default function Layout({ children }) {
   return (
     <html lang="en">
-      <body className={`${myfont.className} bg-[#fff]`}>
+      <body className={`${myfont.className} bg-[#f6f6f6]`}>
         <div className="p-[1.6rem]">
             <Sidebar />
             <main className="lg:ml-[7.7rem]">

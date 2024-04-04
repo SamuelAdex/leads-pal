@@ -1,5 +1,7 @@
 import { connectToDB } from "@/utils/database";
+import User from "@/models/User.model";
 import Lead from "@/models/Lead.model";
+import Point from "@/models/Point.model";
 import { jsonRes } from "@/utils/stringifyResponse";
 
 
@@ -15,6 +17,7 @@ export async function POST(request){
 
         console.log("leads data: ", email, name, phone)
 
+        
         const newLead = await new Lead({
             name,
             email,
@@ -22,8 +25,15 @@ export async function POST(request){
             requirement,
             user
         });
+        const point = await Point.find()
+        const user = await User.findOne({_id: user})
+        if(user){
+            user.points = user.points + point[0].leadPoint;
+            await user.save();
+        }
 
         const res = await newLead.save();
+
 
         if(res){
             return new Response(jsonRes({response: res, msg: "success"}), {status: 200});

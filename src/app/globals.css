@@ -22,9 +22,19 @@
   box-sizing: border-box;
 }
 
+@font-face {
+  font-family: Roboto;
+  src: url("../../public/fonts/Roboto-Medium.ttf");
+}
+
 body {
   background-color: #fff;
-  font-family: 'Roboto', sans-serif;
+  font-family: Roboto;
+}
+.profile{
+  background: linear-gradient(90deg, rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('../../public/images/undraw_Logic.png');
+  background-size: cover;
+  opacity: 20%;
 }
 
 @layer utilities {

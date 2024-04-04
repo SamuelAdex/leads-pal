@@ -7,14 +7,15 @@ import Link from 'next/link';
 import Button from '@/components/Button';
 import {useAuthContext} from '@/context/AuthContext.context';
 
-const Page = () => {
+const Page = (props) => {
     const {register, isLoading} = useAuthContext()
     const [data, setData] = useState({
         firstName: "",
         lastName: "",
         username: "",
         email: "",
-        password: ""
+        password: "",
+        referral: props.searchParams?.username || "",
     });
 
   return (
@@ -56,10 +57,14 @@ const Page = () => {
                     <label>Password</label>
                     <input value={data.password} onChange={(e)=> setData({...data, password: e.target.value})} className='p-3 rounded-[9px] bg-transparent border-[1px] border-[#000]' type='password' placeholder='Enter password' />
                 </div>
+                <div className='flex flex-col gap-1'>
+                    <label>Referral</label>
+                    <input value={data.referral} onChange={(e)=> setData({...data, referral: e.target.value})} className='p-3 rounded-[9px] bg-transparent border-[1px] border-[#000]' type='text' placeholder='Referral username' />
+                </div>
                 <Button
                     text={"Sign up"}
                     btnStyle={"w-full bg-[#000] p-3 rounded-[9px] border-none text-white text-center"}
-                    onBtnClick={()=> register(data.firstName, data.lastName, data.username, data.email, data.password)}
+                    onBtnClick={()=> register(data.firstName, data.lastName, data.username, data.email, data.password, data.referral)}
                     loading={isLoading}
                 />
                 <div className='text-[12px] flex justify-center'>

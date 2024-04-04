@@ -23,6 +23,7 @@ const Button = ({
           //type={btn_type}
           className={`border-2 flex items-center justify-center p-2 font-[500] gap-1 border-black text-black text-[13px] rounded-lg ${btnStyle}`}
           onClick={onBtnClick}
+          disabled={loading}
         >
           {loading === true ? (
             <Loader />
@@ -52,6 +53,7 @@ const Button = ({
           //type={btn_type}
           className={`flex items-center justify-center gap-1 p-2 font-[500] text-center text-[13px] rounded-lg ${btnStyle}`}
           onClick={onBtnClick}
+          disabled={loading}
         >
           {loading === true ? (
             <Loader />

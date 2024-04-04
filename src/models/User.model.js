@@ -13,10 +13,12 @@ const UserSchema = new Schema(
     },
     username: {
       type: String,
+      unique: true,
       required: [true, "this field must not be empty"],
     },
     email: {
       type: String,
+      unique: true,
       required: [true, "this field must not be empty"],
     },
     password: {
@@ -78,6 +80,13 @@ const UserSchema = new Schema(
     },
     panCardUrl:{
       type: String
+    },
+    referral:{
+      type: Schema.Types.ObjectId,
+    },
+    total_referrals: {
+      type: Number,
+      default: 0
     }
   },
   {

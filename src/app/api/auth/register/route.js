@@ -2,10 +2,11 @@ import { connectToDB } from "@/utils/database";
 import User from "@/models/User.model";
 import { jsonRes } from "@/utils/stringifyResponse";
 import { NextRequest, NextResponse } from "next/server";
+import {firststageService} from '@/services/auth'
 
 
 export async function POST(request){
-    const {firstName, lastName, email, username, password} = await request.json();
+    const {firstName, lastName, email, username, password, referral} = await request.json();
 
     try {
         await connectToDB()
@@ -20,16 +21,24 @@ export async function POST(request){
             return NextResponse.json({msg: "User already exists"}, {status: 400})
         }
 
-        const newUser = new User({
-            firstName,
-            lastName,
-            username,
-            email,
-            password
-        })
+        
 
-        const res = await newUser.save();
+        if(referral){
+            const isReferral = await User.findOne({username: referral})
+            if(!isReferral){
+                return new Response(jsonRes({msg: "This referral username doesn't exist"}), {status: 400})
+            }
+        }
 
+        
+        const res = await firststageService({
+            firstName, 
+            lastName, 
+            email, 
+            username, 
+            password, 
+            referral
+        });
         if(res){
             return new Response(jsonRes({response: res, msg: "success"}), {status: 200});
         }else{
