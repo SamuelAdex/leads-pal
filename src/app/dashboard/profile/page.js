@@ -7,6 +7,8 @@ import React, { useState } from 'react'
 import { PiHandCoinsFill } from 'react-icons/pi';
 import { RiGift2Line } from 'react-icons/ri';
 import bgImg from '../../../../public/images/undraw_Logic.png'
+import { toast } from 'react-toastify';
+import { MdContentCopy } from 'react-icons/md';
 
 
 const Page = () => {
@@ -19,6 +21,11 @@ const Page = () => {
         email: userInfo?.email || "",
     })
 
+    const copyText = (c) => {
+        navigator.clipboard.writeText(c);
+        toast(`Referral link copied successfully`);
+    }
+
   return (
     <div className='mt-10'>
         <div className='border-[1px] profile relative border-[#fafaf5] overflow-hidden bg-black md:p-20 p-10 rounded-[12px] w-full md:h-[300px]'>
@@ -28,7 +35,7 @@ const Page = () => {
             </div>
         </div>
         <div className='grid md:grid-cols-2 grid-cols-1 mt-6 gap-6'>
-            <div className='bg-white md:block hidden border-2 border-[#fafaf5] rounded-[14px] p-8'>
+            <div className='bg-white border-2 border-[#fafaf5] rounded-[14px] p-8'>
                 <div className="mt-14 grid md:grid-cols-2 grid-cols-1 items-center gap-4">
                     <div className='flex items-center gap-4 bg-white bg-opacity-[0.5] rounded-[20px] shadow-sm p-4'>
                         <div className='bg-[rgba(22,163,74,0.2)] rounded-[14px] p-3'>
@@ -43,7 +50,12 @@ const Page = () => {
                     <div className='text-black md:text-[18px] text-[16px]'>{userInfo.username}</div>
                     <div className='text-black md:text-[18px] text-[16px]'>{userInfo.email}</div>
                 </div>
-                <div className='bg-white rounded-[12px] mt-6 bg-opacity-[0.5] border-2 border-[#fafaf5] md:h-[50%] h-full p-8'></div>
+                <div className="flex items-center gap-1 p-2 border-2 border-[#fafaf5] rounded-[12px] mt-3 justify-between">
+                    <span className='text-bgSecondary md:flex hidden whitespace-nowrap'>{`leads-pal.vercel.app/register?username=${userInfo?.username}`}</span>
+                    <span className='text-bgSecondary md:hidden flex whitespace-nowrap'>Copy Referral: {`${userInfo?.username}`}</span>
+                    <MdContentCopy className='cursor-pointer active:text-bgSecondary hover:text-bgSecondary' onClick={()=> copyText(`leads-pal.vercel.app/register?username=${userInfo?.username}`)} />
+                </div>
+                {/* <div className='bg-white rounded-[12px] mt-6 bg-opacity-[0.5] border-2 border-[#fafaf5] md:h-[50%] h-full p-8'></div> */}
             </div>
             <div className='bg-white border-2 border-[#fafaf5] rounded-[14px] p-8'>
                 <div className="">
