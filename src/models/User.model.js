@@ -82,7 +82,7 @@ const UserSchema = new Schema(
       type: String
     },
     referral:{
-      type: Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
     },
     total_referrals: {
       type: Number,
